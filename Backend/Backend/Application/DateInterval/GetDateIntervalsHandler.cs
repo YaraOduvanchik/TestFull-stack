@@ -31,10 +31,7 @@ public class GetDateIntervalsHandler
                 FROM Intervals i
                 WHERE i.end_date IS NOT NULL;";
 
-        var intervals = await _dbConnection.QueryAsync<DateIntervalDto>(
-            sql,
-            commandTimeout: 300
-        );
+        var intervals = await _dbConnection.QueryAsync<DateIntervalDto>(sql);
 
         return new GetDateIntervalsResponse(intervals.ToList());
     }
